@@ -1,0 +1,7 @@
+[log]
+file = <path/to/log/file>
+level = DEBUG
+
+[account]
+email = <account email>
+password = <acount password>
