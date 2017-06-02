@@ -122,8 +122,14 @@ def get_profile(profile_url):
 
 def get_progress(user_id):
     badge_page = SESSION.get(BASE_URL + BADGE_URL % (user_id, ))
-    g = re.search(r'<div class="label">(Fanatic.*?)</div>', badge_page.text)
-    return g.group(1)
+    g = re.search(r"""<div class="badge-progress js-badge-progress (.*?)"
+            style=".*?"
+            data-badge-database-name="Fanatic">""", badge_page.text)
+    if g.group(1).startswith("completed "):
+        return "Fanatic - Completed"
+    else:
+        g = re.search(r'<div class="label">(Fanatic.*?)</div>', badge_page.text)
+        return g.group(1)
 
 try:
     fkey = get_fkey()
