@@ -29,7 +29,7 @@ logging.basicConfig(
         filename = config.get("log", "file"),
         level = LOG_LEVEL[config.get("log", "level")],
         format = "[%(asctime)s] [%(levelname)s]: %(message)s",
-        datefmt="%Y-%m-%d %I:%M:%S"
+        datefmt="%Y-%m-%d %H:%M:%S"
         )
 
 
